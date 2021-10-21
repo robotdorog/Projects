@@ -4,10 +4,9 @@ import java.nio.file.Path;
 
 public class Cryptor {
 
-    public String crypt(String toCryptFilePath, String cryptFileResultPath) throws IOException {
+    public String crypt(String strToCrypt) throws IOException {
 
         String result = "";
-        String strToCrypt = reader(toCryptFilePath);
 
         if (strToCrypt != null) {
             int count = 0;
@@ -33,20 +32,15 @@ public class Cryptor {
                 result += count;
             } else
                 result += strToCrypt.charAt(strToCrypt.length() - 1);
-            if (Files.exists(Path.of(cryptFileResultPath))) {
-                writer(result, cryptFileResultPath);
-            } else Files.createFile(Path.of(cryptFileResultPath));
-            writer(result, cryptFileResultPath);
             return result;
         } else {
             return result;
         }
     }
 
-    public String decrypt(String toDecryptFilePath, String decryptFileResultPath) throws IOException {
+    public String decrypt(String strToDecrypt) throws IOException {
 
         String result = "";
-        String strToDecrypt = reader(toDecryptFilePath);
 
         if (strToDecrypt != null) {
             char currentChar = 0;
@@ -74,36 +68,13 @@ public class Cryptor {
                     result += currentChar;
                 }
             }
-            if (Files.exists(Path.of(decryptFileResultPath))) {
-                writer(result, decryptFileResultPath);
-            } else Files.createFile(Path.of(decryptFileResultPath));
-            writer(result, decryptFileResultPath);
+
             return result;
         } else {
             return result;
         }
     }
 
-    private void writer(String Result, String filePath) {
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            writer.write(Result);
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private String reader(String filePath) {
-        BufferedReader reader;
-        String str = "";
-        try {
-            reader = new BufferedReader(new FileReader(filePath));
-            str = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return str;
-    }
 }
+
 
