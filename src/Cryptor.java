@@ -4,6 +4,7 @@ import java.nio.file.Path;
 
 public class Cryptor {
 
+
     public String crypt(String strToCrypt) throws IOException {
 
         String result = "";
