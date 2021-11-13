@@ -1,11 +1,7 @@
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class Cryptor {
 
-
-    public String crypt(String strToCrypt) throws IOException {
+    public String crypt(String strToCrypt) {
 
         String result = "";
 
@@ -14,17 +10,14 @@ public class Cryptor {
             char currentChar = 0;
 
             for (int i = 0; i < strToCrypt.length(); i++) {
-
                 if (currentChar == strToCrypt.charAt(i)) {
                     count++;
                 } else {
                     result += currentChar;
-
                     if (count > 1) {
                         result += count;
                     }
                     currentChar = strToCrypt.charAt(i);
-
                     count = 1;
                 }
             }
@@ -39,7 +32,7 @@ public class Cryptor {
         }
     }
 
-    public String decrypt(String strToDecrypt) throws IOException {
+    public String decrypt(String strToDecrypt) {
 
         String result = "";
 
@@ -58,24 +51,20 @@ public class Cryptor {
                 if (!Character.isDigit(strToDecrypt.charAt(i)))
                     currentChar = strToDecrypt.charAt(i);
             }
-
             if (!Character.isDigit(strToDecrypt.charAt(strToDecrypt.length() - 1)))
                 result += currentChar;
             else {
                 for (int i = 0; i < strToDecrypt.length(); i++)
                     count = Character.getNumericValue(strToDecrypt.charAt(i));
                 for (int j = 1; j < count; j++) {
-
                     result += currentChar;
                 }
             }
-
             return result;
         } else {
             return result;
         }
     }
-
 }
 
 
