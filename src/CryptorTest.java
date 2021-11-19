@@ -48,7 +48,7 @@ class CryptorTest {
     @org.junit.jupiter.api.Test
     void cryptOneRepeatTest() {
         String testString = "aaaa";
-        String resultString = cryptor.decrypt("a3");
+        String resultString = cryptor.decrypt("a4");
         Assert.assertEquals(testString, resultString);
     }
 
