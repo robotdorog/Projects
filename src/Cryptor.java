@@ -26,10 +26,8 @@ public class Cryptor {
                 result += count;
             } else
                 result += strToCrypt.charAt(strToCrypt.length() - 1);
-            return result;
-        } else {
-            return result;
         }
+        return result;
     }
 
     public String decrypt(String strToDecrypt) {
