@@ -5,7 +5,7 @@ public class Cryptor {
 
         String result = "";
 
-        if (strToCrypt != null) {
+        if (strToCrypt != null && !strToCrypt.equals("")) {
             int count = 0;
             char currentChar = 0;
 
@@ -13,7 +13,9 @@ public class Cryptor {
                 if (currentChar == strToCrypt.charAt(i)) {
                     count++;
                 } else {
-                    result += currentChar;
+                    if (currentChar != 0)
+                        result += currentChar;
+
                     if (count > 1) {
                         result += count;
                     }
@@ -33,10 +35,11 @@ public class Cryptor {
     public String decrypt(String strToDecrypt) {
 
         String result = "";
+        char currentChar = 0;
+        int count;
 
-        if (strToDecrypt != null) {
-            char currentChar = 0;
-            int count = 0;
+        if (strToDecrypt != null && !strToDecrypt.equals("")) {
+
             for (int i = 0; i < strToDecrypt.length(); i++) {
                 if (Character.isDigit(strToDecrypt.charAt(i))) {
                     count = Character.getNumericValue(strToDecrypt.charAt(i));
@@ -44,24 +47,17 @@ public class Cryptor {
                         result += currentChar;
                     }
                 } else {
-                    result += currentChar;
-                }
-                if (!Character.isDigit(strToDecrypt.charAt(i)))
                     currentChar = strToDecrypt.charAt(i);
-            }
-            if (!Character.isDigit(strToDecrypt.charAt(strToDecrypt.length() - 1)))
-                result += currentChar;
-            else {
-                for (int i = 0; i < strToDecrypt.length(); i++)
-                    count = Character.getNumericValue(strToDecrypt.charAt(i));
-                for (int j = 1; j < count; j++) {
-                    result += currentChar;
+                    if (currentChar != 0)
+                        result += currentChar;
                 }
             }
-            return result;
-        } else {
-            return result;
+
+            if (!Character.isDigit(strToDecrypt.charAt(strToDecrypt.length() - 1)) &&
+                    !(currentChar == (strToDecrypt.charAt(strToDecrypt.length() - 1))))
+                result += currentChar;
         }
+        return result;
     }
 }
 

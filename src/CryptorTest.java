@@ -12,8 +12,8 @@ class CryptorTest {
 
     @org.junit.jupiter.api.Test
     void decryptBasicTest() {
-        String testString = "Aaaabbbzzztczzzz";
-        String resultString = cryptor.decrypt("Aa3b3z3tcz3");
+        String testString = "AAaaabbbzzztczzz";
+        String resultString = cryptor.decrypt("A2a3b3z3tcz3");
         Assert.assertEquals(testString, resultString);
     }
 
@@ -47,15 +47,15 @@ class CryptorTest {
 
     @org.junit.jupiter.api.Test
     void cryptOneRepeatTest() {
-        String testString = "aaaa";
-        String resultString = cryptor.decrypt("a4");
+        String testString = "a3";
+        String resultString = cryptor.crypt("aaa");
         Assert.assertEquals(testString, resultString);
     }
 
     @org.junit.jupiter.api.Test
     void decryptOneRepeatTest() {
-        String testString = "a3";
-        String resultString = cryptor.decrypt("aaa");
+        String testString = "aaa";
+        String resultString = cryptor.decrypt("a3");
         Assert.assertEquals(testString, resultString);
     }
 

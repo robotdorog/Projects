@@ -10,9 +10,6 @@ public class main {
         String filePathToDeCrypt = "C:\\Users\\Usr1\\IdeaProjects\\Cryptor\\src\\tasks\\file3.txt";
         String filePathDeCryptResult = "C:\\Users\\Usr1\\IdeaProjects\\Cryptor\\src\\tasks\\file4.txt";
 
-
-
-
         FileHandler fileHandlerCrypt = new FileHandler(filePathToCrypt, filePathCryptResult);
         FileHandler fileHandlerDecrypt = new FileHandler(filePathToDeCrypt, filePathDeCryptResult);
 
