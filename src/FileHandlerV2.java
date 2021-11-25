@@ -1,8 +1,11 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class FileHandler {
+public class FileHandlerV2 {
 
     String fileIn;
     String fileOut;
@@ -34,27 +37,26 @@ public class FileHandler {
     }
 
     private void writeToFile (String strIn, String fileOut) {
-            try (FileWriter writer = new FileWriter(fileOut)) {
-                if (Files.exists(Path.of(fileOut))) {
-                    writer.write(strIn);
-                    writer.flush();
-                } else {
-                    Files.createFile(Path.of(fileOut));
-                    writer.write(strIn);
-                    writer.flush();
-                    writer.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+        try (FileWriter writer = new FileWriter(fileOut)) {
+            if (Files.exists(Path.of(fileOut))) {
+                writer.write(strIn);
+                writer.flush();
+            } else {
+                Files.createFile(Path.of(fileOut));
+                writer.write(strIn);
+                writer.flush();
+                writer.close();
             }
-        }
-
-    private String readFromFile (String fileIn) throws IOException {
-            BufferedReader reader;
-            String str;
-            reader = new BufferedReader(new FileReader(fileIn));
-                str = reader.readLine();
-            return str;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
+    private String readFromFile (String fileIn) throws IOException {
+        BufferedReader reader;
+        String str;
+        reader = new BufferedReader(new FileReader(fileIn));
+        str = reader.readLine();
+        return str;
+    }
+}
