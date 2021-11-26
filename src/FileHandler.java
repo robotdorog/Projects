@@ -7,7 +7,7 @@ public class FileHandler {
     String fileIn;
     String fileOut;
     Cryptor cryptor;
-    CryptorV2 cryptorV2;
+
 
 
 
@@ -27,9 +27,7 @@ public class FileHandler {
 
     public void decrypt() throws IOException {
         String strToRead = readFromFile(fileIn);
-//        System.out.println("String to decrypt: " + strToRead);
         String decryptedStringToWrite = cryptor.decrypt(strToRead);
-//        System.out.println("Decrypted string to write:" + decryptedStringToWrite);
         writeToFile(decryptedStringToWrite, fileOut);
     }
 

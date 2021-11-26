@@ -2,6 +2,7 @@ import org.junit.Assert;
 
 class CryptorTest {
     Cryptor cryptor = new Cryptor();
+    CryptorV2 cryptorV2 = new CryptorV2();
 
     @org.junit.jupiter.api.Test
     void cryptBasicTest() {
@@ -73,4 +74,9 @@ class CryptorTest {
         Assert.assertEquals(testString, resultString);
 
     }
+
+    // CryptorV2
+
+
+
 }

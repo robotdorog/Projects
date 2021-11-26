@@ -1,8 +1,7 @@
 public class CryptorV2 {
+    StringBuilder result = new StringBuilder();
 
-    public StringBuilder crypt(String strToCrypt) {
-
-        StringBuilder result = new StringBuilder();
+    public StringBuilder crypt(StringBuilder strToCrypt) {
 
         if (strToCrypt != null && !strToCrypt.equals("")) {
             int count = 0;
@@ -31,9 +30,9 @@ public class CryptorV2 {
         return result;
     }
 
-    public String decrypt(String strToDecrypt) {
+    public StringBuilder decrypt(StringBuilder strToDecrypt) {
 
-        String result = "";
+
         char currentChar = 0;
         int count;
 
@@ -43,18 +42,18 @@ public class CryptorV2 {
                 if (Character.isDigit(strToDecrypt.charAt(i))) {
                     count = Character.getNumericValue(strToDecrypt.charAt(i));
                     for (int j = 1; j < count; j++) {
-                        result += currentChar;
+                        result.append(currentChar);
                     }
                 } else {
                     currentChar = strToDecrypt.charAt(i);
                     if (currentChar != 0)
-                        result += currentChar;
+                        result.append(currentChar);
                 }
             }
 
             if (!Character.isDigit(strToDecrypt.charAt(strToDecrypt.length() - 1)) &&
                     !(currentChar == (strToDecrypt.charAt(strToDecrypt.length() - 1))))
-                result += currentChar;
+                result.append(currentChar);
         }
         return result;
     }

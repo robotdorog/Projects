@@ -9,41 +9,37 @@ public class FileHandlerV2 {
 
     String fileIn;
     String fileOut;
-    Cryptor cryptor;
     CryptorV2 cryptorV2;
 
 
-
-    public FileHandler(String fileIn, String fileOut) {
+    public FileHandlerV2(String fileIn, String fileOut) {
         this.fileIn = fileIn;
         this.fileOut = fileOut;
-        cryptor = new Cryptor();
+        cryptorV2 = new CryptorV2();
 
     }
 
-    public void crypt() throws IOException {
-        String strToRead = readFromFile(fileIn);
-        String cryptedStringToWrite = cryptor.crypt(strToRead);
+    public void cryptV2() throws IOException {
+        StringBuilder strToRead = readFromFile(fileIn);
+        StringBuilder cryptedStringToWrite = cryptorV2.crypt(strToRead);
         writeToFile(cryptedStringToWrite, fileOut);
 
     }
 
-    public void decrypt() throws IOException {
-        String strToRead = readFromFile(fileIn);
-//        System.out.println("String to decrypt: " + strToRead);
-        String decryptedStringToWrite = cryptor.decrypt(strToRead);
-//        System.out.println("Decrypted string to write:" + decryptedStringToWrite);
+    public void decryptV2() throws IOException {
+        StringBuilder strToRead = readFromFile(fileIn);
+        StringBuilder decryptedStringToWrite = cryptorV2.decrypt(strToRead);
         writeToFile(decryptedStringToWrite, fileOut);
     }
 
-    private void writeToFile (String strIn, String fileOut) {
+    private void writeToFile(StringBuilder strIn, String fileOut) {
         try (FileWriter writer = new FileWriter(fileOut)) {
             if (Files.exists(Path.of(fileOut))) {
-                writer.write(strIn);
+                writer.write(String.valueOf(strIn));
                 writer.flush();
             } else {
                 Files.createFile(Path.of(fileOut));
-                writer.write(strIn);
+                writer.write(String.valueOf(strIn));
                 writer.flush();
                 writer.close();
             }
@@ -52,11 +48,19 @@ public class FileHandlerV2 {
         }
     }
 
-    private String readFromFile (String fileIn) throws IOException {
-        BufferedReader reader;
-        String str;
-        reader = new BufferedReader(new FileReader(fileIn));
-        str = reader.readLine();
-        return str;
+    private StringBuilder readFromFile(String fileIn) throws IOException {
+
+        BufferedReader reader = new BufferedReader(new FileReader(fileIn));
+        String str = "";
+        StringBuilder stringBuild = new StringBuilder();
+
+        try {
+//            while ((str = reader.readLine()) != null);
+            str = reader.readLine();
+            stringBuild.append(str);
+            return stringBuild;
+        } finally {
+            reader.close();
+        }
     }
 }
