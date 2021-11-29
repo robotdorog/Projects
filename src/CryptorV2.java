@@ -26,7 +26,7 @@ public class CryptorV2 {
                 result.append(count);
             } else
                 result.append(strToCrypt.charAt(strToCrypt.length() - 1));
-        }
+            }
         return result;
     }
 
