@@ -6,7 +6,8 @@ public class FileHandler {
 
     String fileIn;
     String fileOut;
-    Cryptor cryptor;
+    CryptorViaString cryptorViaString;
+    CryptorViaStringBuilder cryptorViaStringBuilder;
 
 
 
@@ -14,22 +15,12 @@ public class FileHandler {
     public FileHandler(String fileIn, String fileOut) {
         this.fileIn = fileIn;
         this.fileOut = fileOut;
-        cryptor = new Cryptor();
+        cryptorViaString = new CryptorViaString();
+        cryptorViaStringBuilder = new CryptorViaStringBuilder();
 
     }
 
-    public void crypt() throws IOException {
-        String strToRead = readFromFile(fileIn);
-        String cryptedStringToWrite = cryptor.crypt(strToRead);
-        writeToFile(cryptedStringToWrite, fileOut);
 
-    }
-
-    public void decrypt() throws IOException {
-        String strToRead = readFromFile(fileIn);
-        String decryptedStringToWrite = cryptor.decrypt(strToRead);
-        writeToFile(decryptedStringToWrite, fileOut);
-    }
 
     private void writeToFile (String strIn, String fileOut) {
             try (FileWriter writer = new FileWriter(fileOut)) {

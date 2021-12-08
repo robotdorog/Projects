@@ -1,7 +1,9 @@
-public class CryptorV2 {
+public class CryptorViaStringBuilder implements Crypt, Decrypt {
+
+
     StringBuilder result = new StringBuilder();
 
-    public StringBuilder crypt(StringBuilder strToCrypt) {
+    public String crypt(String strToCrypt) {
 
         if (strToCrypt != null && !strToCrypt.equals("")) {
             int count = 0;
@@ -27,10 +29,10 @@ public class CryptorV2 {
             } else
                 result.append(strToCrypt.charAt(strToCrypt.length() - 1));
             }
-        return result;
+        return result.toString();
     }
 
-    public StringBuilder decrypt(StringBuilder strToDecrypt) {
+    public String decrypt(String strToDecrypt) {
 
 
         char currentChar = 0;
@@ -55,6 +57,6 @@ public class CryptorV2 {
                     !(currentChar == (strToDecrypt.charAt(strToDecrypt.length() - 1))))
                 result.append(currentChar);
         }
-        return result;
+        return result.toString();
     }
 }

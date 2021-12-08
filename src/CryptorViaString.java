@@ -1,5 +1,6 @@
 
-public class Cryptor {
+public class CryptorViaString implements Crypt {
+
 
     public String crypt(String strToCrypt) {
 
