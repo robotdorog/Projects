@@ -10,7 +10,7 @@ public class FileHandler {
 
     }
 
-    private void writeToFile (String strIn, String fileOut) {
+    public void writeToFile (String strIn, String fileOut) {
             try (FileWriter writer = new FileWriter(fileOut)) {
                 if (Files.exists(Path.of(fileOut))) {
                     writer.write(strIn);
@@ -26,7 +26,7 @@ public class FileHandler {
             }
         }
 
-    private String readFromFile (String fileIn) throws IOException {
+    public String readFromFile (String fileIn) throws IOException {
             BufferedReader reader;
             String str;
             reader = new BufferedReader(new FileReader(fileIn));
