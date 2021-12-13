@@ -3,24 +3,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class FileHandler {
+    Cryptor cryptor;
 
-    String fileIn;
-    String fileOut;
-    CryptorViaString cryptorViaString;
-    CryptorViaStringBuilder cryptorViaStringBuilder;
-
-
-
-
-    public FileHandler(String fileIn, String fileOut) {
-        this.fileIn = fileIn;
-        this.fileOut = fileOut;
-        cryptorViaString = new CryptorViaString();
-        cryptorViaStringBuilder = new CryptorViaStringBuilder();
+    public FileHandler(Cryptor cryptor) {
+        this.cryptor = cryptor;
 
     }
-
-
 
     private void writeToFile (String strIn, String fileOut) {
             try (FileWriter writer = new FileWriter(fileOut)) {

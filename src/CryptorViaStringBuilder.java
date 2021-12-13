@@ -1,4 +1,4 @@
-public class CryptorViaStringBuilder implements Crypt, Decrypt {
+public class CryptorViaStringBuilder implements Crypt {
 
 
     StringBuilder result = new StringBuilder();
