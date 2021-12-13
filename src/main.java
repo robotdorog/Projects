@@ -15,8 +15,10 @@ public class main {
         String filePathToDeCryptV2 = "C:\\Users\\Usr1\\IdeaProjects\\CryptorViaString\\src\\tasks\\fileV2cryptResult.txt";
         String filePathDeCryptResultV2 = "C:\\Users\\Usr1\\IdeaProjects\\CryptorViaString\\src\\tasks\\fileV2decryptResult.txt";
 
-        Cryptor cryptor = new Cryptor();
-        FileHandler fileHandlerCrypt = new FileHandler(Cryptor cryptor);
+        CryptorViaString cryptorViaString = new CryptorViaString();
+        CryptorViaStringBuilder cryptorViaStringBuilder = new CryptorViaStringBuilder();
+        Cryptor cryptor = new Cryptor(cryptorViaString, cryptorViaStringBuilder);
+        FileHandler fileHandlerCrypt = new FileHandler(cryptor);
 
         String cryptResult =  fileHandlerCrypt.readFromFile(filePathToCrypt);
         cryptResult =  fileHandlerCrypt.cryptor.crypt(cryptResult);
