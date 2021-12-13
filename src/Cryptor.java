@@ -13,7 +13,7 @@ public class Cryptor implements Crypt {
 
     public String crypt(String strToCrypt) {
         long m = System.currentTimeMillis();
-        String cryptedStringViaString = cryptorViaString.crypt(strToCrypt);
+//        String cryptedStringViaString = cryptorViaString.crypt(strToCrypt);
         String cryptedStringViaStringBuilder = cryptorViaStringBuilder.crypt(strToCrypt);
         double timeResult = (double) (System.currentTimeMillis() - m);
         System.out.println("Время выполнения шифрования с ипсользованием StringBuilder: " + timeResult);
@@ -22,10 +22,10 @@ public class Cryptor implements Crypt {
     }
 
     public String decrypt(String strToDecrypt) {
-        long m = System.currentTimeMillis();
-        String cryptedStringViaString = cryptorViaString.decrypt(strToDecrypt);
+        long t = System.currentTimeMillis();
+//        String cryptedStringViaString = cryptorViaString.decrypt(strToDecrypt);
         String cryptedStringViaStringBuilder = cryptorViaStringBuilder.decrypt(strToDecrypt);
-        double timeResult = (double) (System.currentTimeMillis() - m);
+        double timeResult = (double) (System.currentTimeMillis() - t);
         System.out.println("Время выполнения шифрования с ипсользованием StringBuilder: " + timeResult);
 
         return cryptedStringViaStringBuilder;
