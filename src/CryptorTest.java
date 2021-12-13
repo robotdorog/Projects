@@ -6,7 +6,7 @@ public class CryptorTest {
     CryptorViaString cryptorViaString = new CryptorViaString();
     CryptorViaStringBuilder cryptorViaStringBuilder = new CryptorViaStringBuilder();
     StringBuilder testStringBuilder = new StringBuilder();
-    StringBuilder resultSringBuilder = new StringBuilder();
+
 
     @Test
     public void cryptBasicTest() {
@@ -25,7 +25,7 @@ public class CryptorTest {
     @Test
     public void cryptOneCharTest() {
         String testString = "a";
-        String resultString = cryptorViaString.decrypt("a");
+        String resultString = cryptorViaString.crypt("a");
         Assert.assertEquals(testString, resultString);
     }
 
@@ -39,7 +39,7 @@ public class CryptorTest {
     @Test
     public void cryptEmptyStrTest() {
         String testString = "";
-        String resultString = cryptorViaString.decrypt("");
+        String resultString = cryptorViaString.crypt("");
         Assert.assertEquals(testString, resultString);
     }
 
@@ -67,7 +67,7 @@ public class CryptorTest {
     @Test
     public void cryptNoRepeatTest() {
         String testString = "abcdef";
-        String resultString = cryptorViaString.decrypt("abcdef");
+        String resultString = cryptorViaString.crypt("abcdef");
         Assert.assertEquals(testString, resultString);
     }
 
@@ -111,12 +111,14 @@ public class CryptorTest {
 
     @Test
     public void cryptV2EmptyStrTest() {
+        String testStringBuilder = "";
         String resultSringBuilder = cryptorViaStringBuilder.crypt("");
         Assert.assertEquals(testStringBuilder, resultSringBuilder);
     }
 
     @Test
     public void decryptV2EmptyStrTest() {
+        String testStringBuilder = "";
         String resultSringBuilder = cryptorViaStringBuilder.decrypt("");
         Assert.assertEquals(testStringBuilder, resultSringBuilder);
     }

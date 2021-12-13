@@ -1,7 +1,7 @@
 
 public class CryptorViaString implements Crypt {
 
-
+    @Override
     public String crypt(String strToCrypt) {
 
         String result = "";
@@ -33,6 +33,7 @@ public class CryptorViaString implements Crypt {
         return result;
     }
 
+    @Override
     public String decrypt(String strToDecrypt) {
 
         String result = "";

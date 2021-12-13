@@ -3,6 +3,7 @@ public class CryptorViaStringBuilder implements Crypt {
 
     StringBuilder result = new StringBuilder();
 
+    @Override
     public String crypt(String strToCrypt) {
 
         if (strToCrypt != null && !strToCrypt.equals("")) {
@@ -32,6 +33,7 @@ public class CryptorViaStringBuilder implements Crypt {
         return result.toString();
     }
 
+    @Override
     public String decrypt(String strToDecrypt) {
 
 
